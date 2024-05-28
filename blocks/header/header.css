@@ -145,7 +145,8 @@ header nav .nav-brand a {
 }
 
 header nav .nav-brand img {
-  width: 128px;
+  max-width: 216px;
+  width: 100%;
   height: auto;
 }
 
@@ -301,15 +302,50 @@ header nav .nav-tools-wrapper > button {
   padding: 10px;
   border: unset;
   cursor: pointer;
-  height: 40px;
-  width: 40px;
+  height: 22px;
+  width: 22px;
 }
-
-header nav .nav-tools button.nav-cart-button {
-  background-image: url('../../icons/cart.svg');
+header nav .nav-tools .link .compare {
+  background-image: url('../../icons/repeat.svg');
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
+  height: 22px;
+  width: 22px;
+  background-size: contain;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+header nav .nav-tools .link .wishlist {
+  background-image: url('../../icons/heart.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  height: 22px;
+  width: 22px;
+  background-size: contain;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+header nav .nav-tools .link .customer {
+  background-image: url('../../icons/user.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  height: 22px;
+  width: 22px;
+  background-size: contain;
+  display: inline-block;
+  vertical-align: bottom;
+}
+header nav .nav-tools button.nav-cart-button {
+  background-image: url('../../icons/shopping-cart.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  background-size: contain;
 }
 
 header nav .nav-tools button.nav-cart-button[data-count]::after {

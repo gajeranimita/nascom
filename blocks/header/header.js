@@ -159,6 +159,73 @@ export default async function decorate(block) {
 
   const navTools = nav.querySelector('.nav-tools');
 
+    /** Search */
+
+  // TODO
+  const search = document.createRange().createContextualFragment(`
+  <div class="search-wrapper nav-tools-wrapper">
+    <button type="button" class="button nav-search-button">Search</button>
+    <div class="nav-search-input nav-search-panel nav-tools-panel">
+      <form action="/search" method="GET">
+        <input id="search" type="search" name="q" placeholder="Search" />
+        <div id="search_autocomplete" class="search-autocomplete"></div>
+      </form>
+    </div>
+  </div>
+  `);
+
+  navTools.append(search);
+
+  const searchPanel = navTools.querySelector('.nav-search-panel');
+
+  const searchButton = navTools.querySelector('.nav-search-button');
+
+  const searchInput = searchPanel.querySelector('input');
+
+  async function toggleSearch(state) {
+    const show = state ?? !searchPanel.classList.contains('nav-tools-panel--show');
+
+    searchPanel.classList.toggle('nav-tools-panel--show', show);
+
+    if (show) {
+      await import('./searchbar.js');
+      searchInput.focus();
+    }
+  }
+
+  navTools
+    .querySelector('.nav-search-button')
+    .addEventListener('click', () => toggleSearch());
+
+  // Close panels when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!minicartPanel.contains(e.target) && !cartButton.contains(e.target)) {
+      toggleMiniCart(false);
+    }
+
+    if (!searchPanel.contains(e.target) && !searchButton.contains(e.target)) {
+      toggleSearch(false);
+    }
+  });
+
+   /** Wishlist */
+   const wishlist = document.createRange().createContextualFragment(`
+   <div class="link wishlist">
+   <a class="wishlist" title="wishlist Products" href="/wishlist/" tabindex="0">
+   </a>
+   </div>
+ `);
+ navTools.append(wishlist);
+
+
+  /** compare */
+  const compare = document.createRange().createContextualFragment(`
+  <div class="link compare">
+  <a class="compare" title="Compare Products" href="/catalog/product_compare/index/" tabindex="0">
+  </a>
+  </div>
+`);
+navTools.append(compare);
   /** Mini Cart */
   const excludeMiniCartFromPaths = ['/checkout', '/order-confirmation'];
 
@@ -211,54 +278,15 @@ export default async function decorate(block) {
     { eager: true },
   );
 
-  /** Search */
-
-  // TODO
-  const search = document.createRange().createContextualFragment(`
-  <div class="search-wrapper nav-tools-wrapper">
-    <button type="button" class="button nav-search-button">Search</button>
-    <div class="nav-search-input nav-search-panel nav-tools-panel">
-      <form action="/search" method="GET">
-        <input id="search" type="search" name="q" placeholder="Search" />
-        <div id="search_autocomplete" class="search-autocomplete"></div>
-      </form>
+    /** customer */
+    const customer = document.createRange().createContextualFragment(`
+    <div class="link customer">
+    <a class="customer" title="Customer" href="customer/login" tabindex="0">
+    </a>
     </div>
-  </div>
   `);
+  navTools.append(customer);
 
-  navTools.append(search);
-
-  const searchPanel = navTools.querySelector('.nav-search-panel');
-
-  const searchButton = navTools.querySelector('.nav-search-button');
-
-  const searchInput = searchPanel.querySelector('input');
-
-  async function toggleSearch(state) {
-    const show = state ?? !searchPanel.classList.contains('nav-tools-panel--show');
-
-    searchPanel.classList.toggle('nav-tools-panel--show', show);
-
-    if (show) {
-      await import('./searchbar.js');
-      searchInput.focus();
-    }
-  }
-
-  navTools
-    .querySelector('.nav-search-button')
-    .addEventListener('click', () => toggleSearch());
-
-  // Close panels when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!minicartPanel.contains(e.target) && !cartButton.contains(e.target)) {
-      toggleMiniCart(false);
-    }
-
-    if (!searchPanel.contains(e.target) && !searchButton.contains(e.target)) {
-      toggleSearch(false);
-    }
-  });
 
   // hamburger for mobile
   const hamburger = document.createElement('div');
