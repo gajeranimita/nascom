@@ -1,0 +1,57 @@
+.shop-now-banners-row {
+  display: flex;
+  
+}
+
+main > .section .two-column-overlay-wrapper {
+  max-width: 100%;
+}
+.overlay-item {
+  width: 49%;
+  position: relative;
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.overlay-item:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  left: 0;
+}
+.content-overlay h2 {
+  font-size: 3.5rem;
+  font-weight: 200;
+  margin: 0;
+}
+.content-overlay {
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3.5rem;
+  font-weight: 200;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+}
+
+.overlay-item img {
+  width: 100%;
+}
+
+.columns-2-cols.two-column-overlay {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+@media (width <= 640px) {
+  .overlay-item {
+    width: 100%;
+    margin-bottom: 20px;
+}
+}

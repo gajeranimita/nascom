@@ -159,7 +159,7 @@ export default async function decorate(block) {
 
   const navTools = nav.querySelector('.nav-tools');
 
-    /** Search */
+  /** Search */
 
   // TODO
   const search = document.createRange().createContextualFragment(`
@@ -208,15 +208,14 @@ export default async function decorate(block) {
     }
   });
 
-   /** Wishlist */
-   const wishlist = document.createRange().createContextualFragment(`
+  /** Wishlist */
+  const wishlist = document.createRange().createContextualFragment(`
    <div class="link wishlist">
    <a class="wishlist" title="wishlist Products" href="/wishlist/" tabindex="0">
    </a>
    </div>
  `);
- navTools.append(wishlist);
-
+  navTools.append(wishlist);
 
   /** compare */
   const compare = document.createRange().createContextualFragment(`
@@ -224,8 +223,8 @@ export default async function decorate(block) {
   <a class="compare" title="Compare Products" href="/catalog/product_compare/index/" tabindex="0">
   </a>
   </div>
-`);
-navTools.append(compare);
+  `);
+  navTools.append(compare);
   /** Mini Cart */
   const excludeMiniCartFromPaths = ['/checkout', '/order-confirmation'];
 
@@ -279,7 +278,7 @@ navTools.append(compare);
   );
 
     /** customer */
-    const customer = document.createRange().createContextualFragment(`
+  const customer = document.createRange().createContextualFragment(`
     <div class="link customer">
     <a class="customer" title="Customer" href="customer/login" tabindex="0">
     </a>
